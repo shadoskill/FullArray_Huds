@@ -1,0 +1,12 @@
+#category_Arousal.hudCategory{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(5, 128px);
+    grid-template-rows: 128px;
+}
+#category_Arousal.hudCategory>button{
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+}

@@ -1,0 +1,53 @@
+.hudContainer{
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+}
+.hudContainer .row{
+    display: flex;
+    position: relative;
+}
+.hudCategory{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.hudBackground{
+    position: relative;
+    width: 100%;
+    height: 848px;
+}
+.hudBackground>div{
+    height: inherit;
+}
+.hudBackground>div>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: inherit; */
+}
+.hudBackground>div>div>svg{
+    display: unset;
+    position: unset;
+    pointer-events: unset;
+    width: 100%!important;
+    height: 100%!important;
+    max-height: unset;
+    transform: unset;
+    top: unset;
+    left: unset;
+}
+.hudGeneric path, .hudGeneric rect, .hudGeneric circle, .hudBackground path, .hudBackground rect, .hudBackground circle{
+    opacity: 0.0;
+}
+.hudGeneric path:hover, .hudGeneric rect:hover, .hudGeneric circle:hover, .hudBackground path:hover, .hudBackground rect:hover, .hudBackground circle:hover{
+    opacity: 0.8;
+}
+.hudGeneric{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 50px;
+    margin-right: 50px;
+    grid-auto-rows: min-content;
+}

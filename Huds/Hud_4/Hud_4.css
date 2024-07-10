@@ -1,0 +1,11 @@
+#Hud_4{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.hudBackground button{
+    position: absolute;
+    width: min-content;
+    height: min-content;
+    border: 0;
+}
