@@ -5,7 +5,7 @@ import Container from '../../../../components/Elements/Container/Container';
 import { Icon_Close, Icon_Discord, Icon_SecondLife } from '../../../../components/Icons';
 import { HudsInfo } from '../../Huds';
 import { ReactSVG } from 'react-svg';
-import Hud_21_Panel from '../../../../assets/Huds/Hud_21/Sensations Ass 7.svg';
+import Hud_21_Panel from './assets/Huds/Hud_21/Sensations Ass 7.svg';
 import { useState } from 'react';
 
 interface IHud{

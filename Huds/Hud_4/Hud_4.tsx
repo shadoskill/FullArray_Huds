@@ -4,7 +4,7 @@ import Container from '../../../../components/Elements/Container/Container';
 import Static from '../../../../components/Elements/Static/Static';
 import Button from '../../../../components/Elements/Button/Button';
 import { Icon_Close, Icon_Discord, Icon_SecondLife } from '../../../../components/Icons';
-import Hud_4_Panel from '../../../../assets/Huds/Hud_4/Canine Feline.svg';
+import Hud_4_Panel from './Canine Feline.svg';
 import { HudsInfo } from '../../Huds';
 import { ReactSVG } from 'react-svg';
 import { useState } from 'react';

@@ -5,9 +5,9 @@ import Container from '../../../../components/Elements/Container/Container';
 import { Icon_Close } from '../../../../components/Icons';
 import Category from '../../../../components/Elements/Category/Category';
 import './Hud_23.css';
-import PA_Level_1 from '../../../../assets/Huds/Hud_23/PA_Level_1.svg';
-import PA_Level_2 from '../../../../assets/Huds/Hud_23/PA_Level_2.svg';
-import PA_Level_3 from '../../../../assets/Huds/Hud_23/PA_Level_3.svg';
+import PA_Level_1 from './PA_Level_1.svg';
+import PA_Level_2 from './PA_Level_2.svg';
+import PA_Level_3 from './PA_Level_3.svg';
 
 interface IHud{
     doCommand: (channel: number, command: string)=>void;

@@ -5,7 +5,7 @@ import Container from '../../../../components/Elements/Container/Container';
 import { Icon_Close, Icon_Discord, Icon_SecondLife } from '../../../../components/Icons';
 import { HudsInfo } from '../../Huds';
 import { ReactSVG } from 'react-svg';
-import Hud_5_Panel from '../../../../assets/Huds/Hud_5/Sensations Vagina 7.svg';
+import Hud_5_Panel from './Sensations Vagina 7.svg';
 
 interface IHud{
     doCommand: (channel: number, command: string)=>void;

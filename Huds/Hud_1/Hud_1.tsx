@@ -3,7 +3,7 @@ import '../Huds.css';
 import Static from '../../../../components/Elements/Static/Static';
 import Container from '../../../../components/Elements/Container/Container';
 import { Icon_Close } from '../../../../components/Icons';
-import Hud_1_Panel from '../../../../assets/Huds/Hud_1/EmptyList_Vagina.svg';
+import Hud_1_Panel from './EmptyList_Vagina.svg';
 import { ReactSVG } from 'react-svg';
 interface IHud{
     doCommand: (channel: number, command: string)=>void;
