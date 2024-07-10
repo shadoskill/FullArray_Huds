@@ -2,16 +2,14 @@ import '../Huds.css';
 import './Hud_4.css';
 import { Icon_Discord, Icon_SecondLife } from '../../../../components/Icons';
 import Hud_4_Panel from './Canine Feline.svg';
-import { Hudlet_Header, HudsInfo } from '../../Huds';
+import { HudsInfo, Type_Hud } from '../../Huds';
+import { Hudlet_Header } from '../../Hudlet_Header';
 import { ReactSVG } from 'react-svg';
 import { useState } from 'react';
 import PopupGeneric from '../../../../components/Elements/Popups/PopupGeneric/PopupGeneric';
 
-interface Type_HUD{
-    doCommand: (channel: number, command: string)=>void;
-}
 const default_popup = {shininess: false, shininess_cock: false, shininess_balls: false, swinging: false, rubbing: false, balls: false, twitch: false};
-export default function Hud_4({doCommand}: Type_HUD){
+export default function Hud_4({doCommand, closePopup}: Type_Hud){
     const hudInfo = [
         {
             text: "Profile",
@@ -211,7 +209,7 @@ export default function Hud_4({doCommand}: Type_HUD){
         {popupHud.shininess_cock?<PopupGeneric header="Shininess Cock" body="Shininess Cock Control." buttons={buttons_shininess_cock} closePopup={closePopupHud}/>:null}
         {popupHud.shininess_balls?<PopupGeneric header="Shininess Balls" body="Shininess Balls Control." buttons={buttons_shininess_balls} closePopup={closePopupHud}/>:null}
         {popupHud.swinging?<PopupGeneric header="Swinging" body="Floppy animation speeds!" buttons={buttons_swinging} closePopup={closePopupHud}/>:null}
-        <Hudlet_Header title="ZAF Feline - Canine"/>
+        <Hudlet_Header title="ZAF Feline - Canine" closePopup={closePopup}/>
         <HudsInfo buttons={hudInfo}/>
         <div id="Hud_4">
             <div className="hudBackground">

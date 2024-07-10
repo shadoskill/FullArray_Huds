@@ -5,12 +5,10 @@ import './Hud_23.css';
 import PA_Level_1 from './PA_Level_1.svg';
 import PA_Level_2 from './PA_Level_2.svg';
 import PA_Level_3 from './PA_Level_3.svg';
-import { Hudlet_Header } from '../../Huds';
+import { Hudlet_Header } from '../../Hudlet_Header';
+import { Type_Hud } from '../../Huds';
 
-interface IHud{
-    doCommand: (channel: number, command: string)=>void;
-}
-export default function Hud_23({doCommand}: IHud){
+export default function Hud_23({doCommand, closePopup}: Type_Hud){
     const categories = [
         {
             "name": "Arousal",
@@ -25,7 +23,7 @@ export default function Hud_23({doCommand}: IHud){
         }
     ];
     return(<>
-        <Hudlet_Header title="Sensations - Vagina"/>
+        <Hudlet_Header title="Sensations - Vagina" closePopup={closePopup}/>
         <div id="Hud_23">
             {categories.map((entry)=>(
                 <Category id={entry.name} className="hudCategory">

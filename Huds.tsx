@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import '../../components/Elements/DisplayLists/DisplayLists.css';
 import { Default_Outfit } from "../../components/Interfaces/Outfit";
-import { doLink, doLinkMulti, doUnlink, doUnlinkMulti, getList, randomUUID } from "../../components/Functions";
+import { doLink, doLinkMulti, doUnlink, doUnlinkMulti, getList } from "../../components/Functions";
 import ListContainer from "../../components/Elements/ListContainer/ListContainer";
 import Interface_PopupState, { Default_PopupState } from "../../components/Interfaces/Popup";
 import Interface_Settings from "../../components/Interfaces/Settings";
@@ -17,9 +17,8 @@ import Category from "../../components/Elements/Category/Category";
 import Container from "../../components/Elements/Container/Container";
 import Static from "../../components/Elements/Static/Static";
 import Button from "../../components/Elements/Button/Button";
-import Checkbox from "../../components/Elements/Checkbox/Checkbox";
 import Hud_31 from "./Huds/Huds_31/Hud_31";
-import { Icon_Close } from "../../components/Icons";
+import { doCommand } from "./Hudlet_Command";
 
 type Type_Huds={
     settings: Interface_Settings;
@@ -32,11 +31,11 @@ type Type_HudsInfoButtons={
     icon: ReactElement;
     url: string;
 }
-const module = "Huds";
-let closePopup = ()=>{};
-export const doCommand = async(channel: number, command: string)=>{
-    await Post("Huds/DoCommand", {command: JSON.stringify({channel: channel, command: command})});
+export type Type_Hud={
+    doCommand: (channel: number, command: string)=>void;
+    closePopup: ()=>void;
 }
+const module = "Huds";
 export default function Huds({settings}: Type_Huds){
     const [list, setList] = useState([Default_Outfit]);
     const [listLinked, setListLinked] = useState<number[]>([]);
@@ -62,7 +61,7 @@ export default function Huds({settings}: Type_Huds){
         settings: settings,
         module: module,
     }
-    closePopup = ()=>{
+    const closePopup = ()=>{
         setPopupState({...popupState, list: true, misc: false});
     }
     const init = ()=>{
@@ -71,6 +70,7 @@ export default function Huds({settings}: Type_Huds){
     }
     const props_huds = {
         doCommand: doCommand,
+        closePopup: closePopup,
     }
     useEffect(init, []);	
     return(<>
@@ -94,53 +94,15 @@ export function HudsInfo({buttons}: Type_HudsInfo){
     return(
         <Category id="Creator & Product Info">
             {buttons.map((button)=>(
-                <Container>
+                <Container key={button.text}>
                     <Static>
                         {button.text}
                     </Static>
-                    <Button
-                        onClick={async()=>{
-                            await Post("Huds/DoInfo", {text: button.text+": "+button.url});
-                        }}
-                    >
+                    <Button onClick={async()=>await Post("Huds/DoInfo", {text: button.text+": "+button.url})}>
                         {button.icon}
                     </Button>
                 </Container>
             ))}
         </Category>
-    );
-}
-type Type_Hudlet_Toggle = {
-    text: string;
-    command: [Type_Hudlet_Toggle_Command]
-}
-type Type_Hudlet_Toggle_Command = {
-    channel: number;
-    command: string;
-}
-export function Hudlet_Toggle({text, command}: Type_Hudlet_Toggle){
-    const [toggle, setToggle] = useState(false);
-    const handle_checkbox = ()=>{
-        setToggle(!toggle);
-        doCommand(command[+(!toggle)]["channel"], command[+(!toggle)]["command"]);
-    };
-    return(<>
-        <Container>
-            <Static>
-                {text}
-            </Static>
-            <Checkbox id={randomUUID()} toggle={toggle} onClick={handle_checkbox}/>
-        </Container>
-    </>);
-}
-type type_Hudlet_Header = {
-    title: string;
-}
-export function Hudlet_Header({title}: type_Hudlet_Header){
-    return(
-        <Container className="navSize">
-            <Static isHeader={true}>{title}</Static>
-            <Button onClick={closePopup}><Icon_Close/></Button>
-        </Container>
     );
 }

@@ -1,29 +1,30 @@
 import Button from '../../../../components/Elements/Button/Button';
-import { Hudlet_Header } from '../../Huds';
+import { Hudlet_Header } from '../../Hudlet_Header';
+import { Type_Hud } from '../../Huds';
 import '../Huds.css';
 
-interface IHud{
-    doCommand: (channel: number, command: string)=>void;
-}
-export default function Hud_2({doCommand}: IHud){
+export default function Hud_2({doCommand, closePopup}: Type_Hud){
     const cmdBase = {
         owner: "!~uuidTarget~!",
         product: "ntk",
         side: "3"
     };
+    const command = (data: object)=>{
+        doCommand(10, JSON.stringify({...cmdBase, ...data}));
+    }
     return(<>
-        <Hudlet_Header title="[EmptyList] - NTK"/>
+        <Hudlet_Header title="[EmptyList] - NTK" closePopup={closePopup}/>
         <div id="Hud_2" className="hudGeneric">
-            <Button onClick={()=>doCommand(10, JSON.stringify({...cmdBase, drip: "1"}))}>Drip On</Button>
-            <Button onClick={()=>doCommand(10, JSON.stringify({...cmdBase, drip: "0"}))}>Drip Off</Button>
-            <Button onClick={()=>doCommand(10, JSON.stringify({...cmdBase, slapToggle: "1"}))}>Slap On</Button>
-            <Button onClick={()=>doCommand(10, JSON.stringify({...cmdBase, slapToggle: "0"}))}>Slap Off</Button>
-            <Button onClick={()=>doCommand(10, JSON.stringify({...cmdBase, cum: "1"}))}>Cum On</Button>
-            <Button onClick={()=>doCommand(10, JSON.stringify({...cmdBase, cum: "0"}))}>Cum Off</Button>
-            <Button onClick={()=>doCommand(10, JSON.stringify({...cmdBase, nippleOverlay: "1"}))}>Overlay On</Button>
-            <Button onClick={()=>doCommand(10, JSON.stringify({...cmdBase, nippleOverlay: "0"}))}>Overlay Off</Button>
-            <Button onClick={()=>doCommand(10, JSON.stringify({...cmdBase, nippleType: "adult"}))}>Adult</Button>
-            <Button onClick={()=>doCommand(10, JSON.stringify({...cmdBase, nippleType: "pg"}))}>Flat</Button>
+            <Button onClick={()=>command({drip: "1"})}>Drip On</Button>
+            <Button onClick={()=>command({drip: "0"})}>Drip Off</Button>
+            <Button onClick={()=>command({slapToggle: "1"})}>Slap On</Button>
+            <Button onClick={()=>command({slapToggle: "0"})}>Slap Off</Button>
+            <Button onClick={()=>command({cum: "1"})}>Cum On</Button>
+            <Button onClick={()=>command({cum: "0"})}>Cum Off</Button>
+            <Button onClick={()=>command({nippleOverlay: "1"})}>Overlay On</Button>
+            <Button onClick={()=>command({nippleOverlay: "0"})}>Overlay Off</Button>
+            <Button onClick={()=>command({nippleType: "adult"})}>Adult</Button>
+            <Button onClick={()=>command({nippleType: "pg"})}>Flat</Button>
         </div>
     </>);
 }

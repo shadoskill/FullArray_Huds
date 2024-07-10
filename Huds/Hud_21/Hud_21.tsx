@@ -1,14 +1,12 @@
 import '../Huds.css';
 import { Icon_Discord, Icon_SecondLife } from '../../../../components/Icons';
-import { Hudlet_Header, HudsInfo } from '../../Huds';
+import { HudsInfo, Type_Hud } from '../../Huds';
+import { Hudlet_Header } from '../../Hudlet_Header';
 import { ReactSVG } from 'react-svg';
 import Hud_21_Panel from './Sensations Ass 7.svg';
 import { useState } from 'react';
 
-interface IHud{
-    doCommand: (channel: number, command: string)=>void;
-}
-export default function Hud_21({doCommand}: IHud){
+export default function Hud_21({doCommand, closePopup}: Type_Hud){
     const hudInfo = [
         {
             text: "Profile",
@@ -78,7 +76,7 @@ export default function Hud_21({doCommand}: IHud){
     });
     return(<>
         <div id="Hud_21">
-            <Hudlet_Header title="Sensations - Ass"/>
+            <Hudlet_Header title="Sensations - Ass" closePopup={closePopup}/>
             <HudsInfo buttons={hudInfo}/>
             <div className="hudBackground">
                 <ReactSVG src={Hud_21_Panel} onClick={(e: any)=>{

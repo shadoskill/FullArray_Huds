@@ -1,16 +1,14 @@
 import '../Huds.css';
 import { Icon_SecondLife } from '../../../../components/Icons';
-import { Hudlet_Header, HudsInfo } from '../../Huds';
+import { HudsInfo, Type_Hud } from '../../Huds';
+import { Hudlet_Header } from '../../Hudlet_Header';
 import { ReactSVG } from 'react-svg';
 import Icon_PhatPussy from './PhatPussy_Icon.webp';
 // import Hud_31_Panel from '../../../../assets/Huds/Hud_31/Hud_31_Panel.svg';
 import Hud_31_Panel from './Hud_31_Panel.svg';
 import { useState } from 'react';
 
-interface IHud{
-    doCommand: (channel: number, command: string)=>void;
-}
-export default function Hud_31({doCommand}: IHud){
+export default function Hud_31({doCommand, closePopup}: Type_Hud){
     const [effect_squirt, setEffect_squirt] = useState(false);
     const [effect_pee, setEffect_pee] = useState(false);
     const hudInfo = [
@@ -48,7 +46,7 @@ export default function Hud_31({doCommand}: IHud){
     };
     return(<>
         <div id="Hud_5">
-            <Hudlet_Header title="Phat Pussy"/>
+            <Hudlet_Header title="Phat Pussy" closePopup={closePopup}/>
             <HudsInfo buttons={hudInfo}/>
             <div className="hudBackground">
                 <ReactSVG src={Hud_31_Panel} onClick={(e: any)=>{

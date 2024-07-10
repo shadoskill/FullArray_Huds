@@ -1,13 +1,11 @@
 import '../Huds.css';
 import { Icon_Discord, Icon_SecondLife } from '../../../../components/Icons';
-import { Hudlet_Header, HudsInfo } from '../../Huds';
+import { HudsInfo, Type_Hud } from '../../Huds';
+import { Hudlet_Header } from '../../Hudlet_Header';
 import { ReactSVG } from 'react-svg';
 import Hud_5_Panel from './Sensations Vagina 7.svg';
 
-interface IHud{
-    doCommand: (channel: number, command: string)=>void;
-}
-export default function Hud_5({doCommand}: IHud){
+export default function Hud_5({doCommand, closePopup}: Type_Hud){
     const hudInfo = [
         {
             text: "Profile",
@@ -60,7 +58,7 @@ export default function Hud_5({doCommand}: IHud){
     };
     return(<>
         <div id="Hud_5">
-            <Hudlet_Header title="Sensations - Vagina"/>
+            <Hudlet_Header title="Sensations - Vagina" closePopup={closePopup}/>
             <HudsInfo buttons={hudInfo}/>
             <div className="hudBackground">
                 <ReactSVG src={Hud_5_Panel} onClick={(e: any)=>{

@@ -1,11 +1,10 @@
 import '../Huds.css';
 import Hud_1_Panel from './EmptyList_Vagina.svg';
 import { ReactSVG } from 'react-svg';
-import { Hudlet_Header } from '../../Huds';
-interface IHud{
-    doCommand: (channel: number, command: string)=>void;
-}
-export default function Hud_1({doCommand}: IHud){
+import { Type_Hud } from '../../Huds';
+import { Hudlet_Header } from '../../Hudlet_Header';
+
+export default function Hud_1({doCommand, closePopup}: Type_Hud){
     const buttons = {
         "Vagina_Flat":    "vagina,flat",
         "Vagina_Close":  "vagina,close",
@@ -23,12 +22,11 @@ export default function Hud_1({doCommand}: IHud){
         "Effect_Pee":     "effect,pee",
     };
     return(<>
-        <Hudlet_Header title="[EmptyList] - Vagina"/>
+        <Hudlet_Header title="[EmptyList] - Vagina" closePopup={closePopup}/>
         <div id="Hud_1">
             <div className="hudBackground">
                 <ReactSVG src={Hud_1_Panel} onClick={(e: any)=>{
                     const idButton = e.target.parentNode.id;
-                    console.log(idButton);
                     const buttonData = buttons[idButton as keyof typeof buttons];
                     if(buttonData !== undefined){
                         doCommand(10, buttonData);                
