@@ -1,19 +1,16 @@
 import Button from '../../../../components/Elements/Button/Button';
 import '../Huds.css';
-import Static from '../../../../components/Elements/Static/Static';
-import Container from '../../../../components/Elements/Container/Container';
-import { Icon_Close } from '../../../../components/Icons';
 import Category from '../../../../components/Elements/Category/Category';
 import './Hud_23.css';
 import PA_Level_1 from './PA_Level_1.svg';
 import PA_Level_2 from './PA_Level_2.svg';
 import PA_Level_3 from './PA_Level_3.svg';
+import { Hudlet_Header } from '../../Huds';
 
 interface IHud{
     doCommand: (channel: number, command: string)=>void;
-    closePopup: ()=>void;
 }
-export default function Hud_23({doCommand, closePopup}: IHud){
+export default function Hud_23({doCommand}: IHud){
     const categories = [
         {
             "name": "Arousal",
@@ -28,10 +25,7 @@ export default function Hud_23({doCommand, closePopup}: IHud){
         }
     ];
     return(<>
-        <Container className="navSize">
-            <Static isHeader={true}>Sensations - Vagina</Static>
-            <Button onClick={closePopup}><Icon_Close/></Button>
-        </Container>
+        <Hudlet_Header title="Sensations - Vagina"/>
         <div id="Hud_23">
             {categories.map((entry)=>(
                 <Category id={entry.name} className="hudCategory">

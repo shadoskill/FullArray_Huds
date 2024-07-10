@@ -1,9 +1,6 @@
-import Button from '../../../../components/Elements/Button/Button';
 import '../Huds.css';
-import Static from '../../../../components/Elements/Static/Static';
-import Container from '../../../../components/Elements/Container/Container';
-import { Icon_Close, Icon_SecondLife } from '../../../../components/Icons';
-import { HudsInfo } from '../../Huds';
+import { Icon_SecondLife } from '../../../../components/Icons';
+import { Hudlet_Header, HudsInfo } from '../../Huds';
 import { ReactSVG } from 'react-svg';
 import Icon_PhatPussy from './PhatPussy_Icon.webp';
 // import Hud_31_Panel from '../../../../assets/Huds/Hud_31/Hud_31_Panel.svg';
@@ -12,9 +9,8 @@ import { useState } from 'react';
 
 interface IHud{
     doCommand: (channel: number, command: string)=>void;
-    closePopup: ()=>void;
 }
-export default function Hud_31({doCommand, closePopup}: IHud){
+export default function Hud_31({doCommand}: IHud){
     const [effect_squirt, setEffect_squirt] = useState(false);
     const [effect_pee, setEffect_pee] = useState(false);
     const hudInfo = [
@@ -52,10 +48,7 @@ export default function Hud_31({doCommand, closePopup}: IHud){
     };
     return(<>
         <div id="Hud_5">
-            <Container className="navSize">
-                <Static isHeader={true}>Phat Pussy</Static>
-                <Button onClick={closePopup}><Icon_Close/></Button>
-            </Container>
+            <Hudlet_Header title="Phat Pussy"/>
             <HudsInfo buttons={hudInfo}/>
             <div className="hudBackground">
                 <ReactSVG src={Hud_31_Panel} onClick={(e: any)=>{

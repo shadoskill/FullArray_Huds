@@ -1,18 +1,14 @@
-import Button from '../../../../components/Elements/Button/Button';
 import '../Huds.css';
-import Static from '../../../../components/Elements/Static/Static';
-import Container from '../../../../components/Elements/Container/Container';
-import { Icon_Close, Icon_Discord, Icon_SecondLife } from '../../../../components/Icons';
-import { HudsInfo } from '../../Huds';
+import { Icon_Discord, Icon_SecondLife } from '../../../../components/Icons';
+import { Hudlet_Header, HudsInfo } from '../../Huds';
 import { ReactSVG } from 'react-svg';
-import Hud_21_Panel from './assets/Huds/Hud_21/Sensations Ass 7.svg';
+import Hud_21_Panel from './Sensations Ass 7.svg';
 import { useState } from 'react';
 
 interface IHud{
     doCommand: (channel: number, command: string)=>void;
-    closePopup: ()=>void;
 }
-export default function Hud_21({doCommand, closePopup}: IHud){
+export default function Hud_21({doCommand}: IHud){
     const hudInfo = [
         {
             text: "Profile",
@@ -82,10 +78,7 @@ export default function Hud_21({doCommand, closePopup}: IHud){
     });
     return(<>
         <div id="Hud_21">
-            <Container className="navSize">
-                <Static isHeader={true}>Sensations - Ass</Static>
-                <Button onClick={closePopup}><Icon_Close/></Button>
-            </Container>
+            <Hudlet_Header title="Sensations - Ass"/>
             <HudsInfo buttons={hudInfo}/>
             <div className="hudBackground">
                 <ReactSVG src={Hud_21_Panel} onClick={(e: any)=>{

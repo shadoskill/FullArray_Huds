@@ -1,17 +1,13 @@
-import Button from '../../../../components/Elements/Button/Button';
 import '../Huds.css';
-import Static from '../../../../components/Elements/Static/Static';
-import Container from '../../../../components/Elements/Container/Container';
-import { Icon_Close, Icon_Discord, Icon_SecondLife } from '../../../../components/Icons';
-import { HudsInfo } from '../../Huds';
+import { Icon_Discord, Icon_SecondLife } from '../../../../components/Icons';
+import { Hudlet_Header, HudsInfo } from '../../Huds';
 import { ReactSVG } from 'react-svg';
 import Hud_5_Panel from './Sensations Vagina 7.svg';
 
 interface IHud{
     doCommand: (channel: number, command: string)=>void;
-    closePopup: ()=>void;
 }
-export default function Hud_5({doCommand, closePopup}: IHud){
+export default function Hud_5({doCommand}: IHud){
     const hudInfo = [
         {
             text: "Profile",
@@ -64,10 +60,7 @@ export default function Hud_5({doCommand, closePopup}: IHud){
     };
     return(<>
         <div id="Hud_5">
-            <Container className="navSize">
-                <Static isHeader={true}>Sensations - Vagina</Static>
-                <Button onClick={closePopup}><Icon_Close/></Button>
-            </Container>
+            <Hudlet_Header title="Sensations - Vagina"/>
             <HudsInfo buttons={hudInfo}/>
             <div className="hudBackground">
                 <ReactSVG src={Hud_5_Panel} onClick={(e: any)=>{

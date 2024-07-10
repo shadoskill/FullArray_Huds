@@ -1,24 +1,18 @@
 import Button from '../../../../components/Elements/Button/Button';
+import { Hudlet_Header } from '../../Huds';
 import '../Huds.css';
-import Static from '../../../../components/Elements/Static/Static';
-import Container from '../../../../components/Elements/Container/Container';
-import { Icon_Close } from '../../../../components/Icons';
 
 interface IHud{
     doCommand: (channel: number, command: string)=>void;
-    closePopup: ()=>void;
 }
-export default function Hud_2({doCommand, closePopup}: IHud){
+export default function Hud_2({doCommand}: IHud){
     const cmdBase = {
         owner: "!~uuidTarget~!",
         product: "ntk",
         side: "3"
     };
     return(<>
-        <Container className="navSize">
-            <Static isHeader={true}>[EmptyList] - NTK</Static>
-            <Button onClick={closePopup}><Icon_Close/></Button>
-        </Container>
+        <Hudlet_Header title="[EmptyList] - NTK"/>
         <div id="Hud_2" className="hudGeneric">
             <Button onClick={()=>doCommand(10, JSON.stringify({...cmdBase, drip: "1"}))}>Drip On</Button>
             <Button onClick={()=>doCommand(10, JSON.stringify({...cmdBase, drip: "0"}))}>Drip Off</Button>

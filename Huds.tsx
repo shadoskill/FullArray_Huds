@@ -19,6 +19,7 @@ import Static from "../../components/Elements/Static/Static";
 import Button from "../../components/Elements/Button/Button";
 import Checkbox from "../../components/Elements/Checkbox/Checkbox";
 import Hud_31 from "./Huds/Huds_31/Hud_31";
+import { Icon_Close } from "../../components/Icons";
 
 type Type_Huds={
     settings: Interface_Settings;
@@ -32,6 +33,7 @@ type Type_HudsInfoButtons={
     url: string;
 }
 const module = "Huds";
+let closePopup = ()=>{};
 export const doCommand = async(channel: number, command: string)=>{
     await Post("Huds/DoCommand", {command: JSON.stringify({channel: channel, command: command})});
 }
@@ -60,7 +62,7 @@ export default function Huds({settings}: Type_Huds){
         settings: settings,
         module: module,
     }
-    const closePopup = ()=>{
+    closePopup = ()=>{
         setPopupState({...popupState, list: true, misc: false});
     }
     const init = ()=>{
@@ -69,7 +71,6 @@ export default function Huds({settings}: Type_Huds){
     }
     const props_huds = {
         doCommand: doCommand,
-        closePopup: closePopup,
     }
     useEffect(init, []);	
     return(<>
@@ -131,4 +132,15 @@ export function Hudlet_Toggle({text, command}: Type_Hudlet_Toggle){
             <Checkbox id={randomUUID()} toggle={toggle} onClick={handle_checkbox}/>
         </Container>
     </>);
+}
+type type_Hudlet_Header = {
+    title: string;
+}
+export function Hudlet_Header({title}: type_Hudlet_Header){
+    return(
+        <Container className="navSize">
+            <Static isHeader={true}>{title}</Static>
+            <Button onClick={closePopup}><Icon_Close/></Button>
+        </Container>
+    );
 }
