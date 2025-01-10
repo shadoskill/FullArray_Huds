@@ -8,7 +8,7 @@ import { ReactSVG } from 'react-svg';
 import { useState } from 'react';
 import PopupGeneric from '../../../../components/Elements/Popups/PopupGeneric/PopupGeneric';
 
-const default_popup = {shininess: false, shininess_cock: false, shininess_balls: false, swinging: false, rubbing: false, balls: false, twitch: false};
+const default_popup = {shininess: false, shininess_cock: false, shininess_balls: false, swinging: false, ballSwing1: false, ballSwing2: false, ballSwing11: false, ballSwing22: false, ballSwing33: false, ballSwing44: false, rubbing: false, balls: false, twitch: false};
 export default function Hud_4({doCommand, closePopup}: Type_Hud){
     const hudInfo = [
         {
@@ -150,6 +150,13 @@ export default function Hud_4({doCommand, closePopup}: Type_Hud){
         "Effect_Clean": "clean",
         "Effect_Stop": "stop",
         "Effect_Swing": ()=>openPopupHud("swinging"),
+        "BallSwing_1a": ()=>openPopupHud("ballSwing1"),
+        "BallSwing_2a": ()=>openPopupHud("ballSwing2"),
+
+        "BallSwing_1b": ()=>openPopupHud("ballSwing11"),
+        "BallSwing_2b": ()=>openPopupHud("ballSwing22"),
+        "BallSwing_3b": ()=>openPopupHud("ballSwing33"),
+        "BallSwing_4b": ()=>openPopupHud("ballSwing44"),
     };
     const buttons_rubbing = [
         [()=>doCommand(55, "rub,0"), "Slow,0"],
@@ -195,6 +202,44 @@ export default function Hud_4({doCommand, closePopup}: Type_Hud){
         [()=>doCommand(55, "flop,0,1"), "Default,0"],
         [()=>doCommand(55, "flop,0,2"), "Fast,0"],
     ];
+    const buttons_ballSwing1 = [
+        [()=>doCommand(55, "ballswing,bsr0_0"), "Slow"],
+        [()=>doCommand(55, "ballswing,bsr0_1"), "Default"],
+        [()=>doCommand(55, "ballswing,bsr0_2"), "Fast"],
+        [()=>doCommand(55, "ballswing,bsr0_3"), "Fastest"],
+    ];
+    const buttons_ballSwing2 = [
+        [()=>doCommand(55, "ballswing,bsr1_0"), "Slow"],
+        [()=>doCommand(55, "ballswing,bsr1_1"), "Default"],
+        [()=>doCommand(55, "ballswing,bsr1_2"), "Fast"],
+        [()=>doCommand(55, "ballswing,bsr1_3"), "Fastest"],
+    ];
+    const buttons_ballSwing11 = [
+        [()=>doCommand(55, "ballswing,bs0_0"), "Slow"],
+        [()=>doCommand(55, "ballswing,bs1_0"), "Default"],
+        [()=>doCommand(55, "ballswing,bs2_0"), "Fast"],
+        [()=>doCommand(55, "ballswing,bs3_0"), "Fastest"],
+    ];
+    const buttons_ballSwing22 = [
+        [()=>doCommand(55, "ballswing,bs0_1"), "Slow"],
+        [()=>doCommand(55, "ballswing,bs1_1"), "Default"],
+        [()=>doCommand(55, "ballswing,bs2_1"), "Fast"],
+        [()=>doCommand(55, "ballswing,bs3_1"), "Fastest"],
+    ];
+    const buttons_ballSwing33 = [
+        [()=>doCommand(55, "ballswing,bs0_2"), "Slow"],
+        [()=>doCommand(55, "ballswing,bs1_2"), "Default"],
+        [()=>doCommand(55, "ballswing,bs2_2"), "Fast"],
+        [()=>doCommand(55, "ballswing,bs3_2"), "Fastest"],
+    ];
+    const buttons_ballSwing44 = [
+        [()=>doCommand(55, "ballswing,bs0_3"), "Slow"],
+        [()=>doCommand(55, "ballswing,bs1_3"), "Default"],
+        [()=>doCommand(55, "ballswing,bs2_3"), "Fast"],
+        [()=>doCommand(55, "ballswing,bs3_3"), "Fastest"],
+    ];
+
+
     const closePopupHud = ()=>{
         setPopupHud(default_popup);
     }
@@ -209,6 +254,14 @@ export default function Hud_4({doCommand, closePopup}: Type_Hud){
         {popupHud.shininess_cock?<PopupGeneric header="Shininess Cock" body="Shininess Cock Control." buttons={buttons_shininess_cock} closePopup={closePopupHud}/>:null}
         {popupHud.shininess_balls?<PopupGeneric header="Shininess Balls" body="Shininess Balls Control." buttons={buttons_shininess_balls} closePopup={closePopupHud}/>:null}
         {popupHud.swinging?<PopupGeneric header="Swinging" body="Floppy animation speeds!" buttons={buttons_swinging} closePopup={closePopupHud}/>:null}
+        {popupHud.ballSwing1?<PopupGeneric header="Ball Swing 1" body="Floppy animation speeds!" buttons={buttons_ballSwing1} closePopup={closePopupHud}/>:null}
+        {popupHud.ballSwing2?<PopupGeneric header="Ball Swing 2" body="Floppy animation speeds!" buttons={buttons_ballSwing2} closePopup={closePopupHud}/>:null}
+
+        {popupHud.ballSwing11?<PopupGeneric header="Ball Swing 1" body="Floppy animation speeds!" buttons={buttons_ballSwing11} closePopup={closePopupHud}/>:null}
+        {popupHud.ballSwing22?<PopupGeneric header="Ball Swing 2" body="Floppy animation speeds!" buttons={buttons_ballSwing22} closePopup={closePopupHud}/>:null}
+        {popupHud.ballSwing33?<PopupGeneric header="Ball Swing 3" body="Floppy animation speeds!" buttons={buttons_ballSwing33} closePopup={closePopupHud}/>:null}
+        {popupHud.ballSwing44?<PopupGeneric header="Ball Swing 4" body="Floppy animation speeds!" buttons={buttons_ballSwing44} closePopup={closePopupHud}/>:null}
+
         <Hudlet_Header title="ZAF Feline - Canine" closePopup={closePopup}/>
         <HudsInfo buttons={hudInfo}/>
         <div id="Hud_4">

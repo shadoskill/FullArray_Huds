@@ -4,7 +4,6 @@ import { Default_Outfit } from "../../components/Interfaces/Outfit";
 import { doLink, doLinkMulti, doUnlink, doUnlinkMulti, getList } from "../../components/Functions";
 import ListContainer from "../../components/Elements/ListContainer/ListContainer";
 import Interface_PopupState, { Default_PopupState } from "../../components/Interfaces/Popup";
-import Interface_Settings from "../../components/Interfaces/Settings";
 import Post from "../../components/Elements/Post";
 import Hud_1 from "./Huds/Hud_1/Hud_1";
 import Hud_2 from "./Huds/Hud_2/Hud_2";
@@ -20,9 +19,6 @@ import Button from "../../components/Elements/Button/Button";
 import Hud_31 from "./Huds/Huds_31/Hud_31";
 import { doCommand } from "./Hudlet_Command";
 
-type Type_Huds={
-    settings: Interface_Settings;
-}
 export type Type_HudsInfo={
     buttons: Type_HudsInfoButtons[];
 }
@@ -36,7 +32,7 @@ export type Type_Hud={
     closePopup: ()=>void;
 }
 const module = "Huds";
-export default function Huds({settings}: Type_Huds){
+export default function Huds(){
     const [list, setList] = useState([Default_Outfit]);
     const [listLinked, setListLinked] = useState<number[]>([]);
     const [prefixList, setPrefixList] = useState<string[]>([]);
@@ -58,7 +54,6 @@ export default function Huds({settings}: Type_Huds){
         doUnlinkMulti: (ids: number[])=>doUnlinkMulti(module, ids, setListLinked),
         popupState: popupState,   
         setPopupState: setPopupState,     
-        settings: settings,
         module: module,
     }
     const closePopup = ()=>{
