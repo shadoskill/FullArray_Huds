@@ -41,7 +41,7 @@
     opacity: 0.0;
 }
 .hudGeneric path:hover, .hudGeneric rect:hover, .hudGeneric circle:hover, .hudBackground path:hover, .hudBackground rect:hover, .hudBackground circle:hover{
-    opacity: 0.8;
+    opacity: 1;
 }
 .hudGeneric{
     display: grid;
@@ -50,4 +50,15 @@
     margin-left: 50px;
     margin-right: 50px;
     grid-auto-rows: min-content;
+}
+svg text, svg{
+    pointer-events: none;
+    user-select: none;
+}
+#Buttons{
+    fill: rgb(0, 0, 0);
+    opacity: 0;
+}
+#Buttons:hover{
+    opacity: 0.5;
 }

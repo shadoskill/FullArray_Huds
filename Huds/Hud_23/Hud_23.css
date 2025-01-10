@@ -1,12 +1,15 @@
-#category_Arousal.hudCategory{
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    grid-template-columns: repeat(5, 128px);
-    grid-template-rows: 128px;
+#HUD text{
+    font-size: 15px;
+    font-family: 'Impact' !important;
 }
-#category_Arousal.hudCategory>button{
-    padding-bottom: 6px;
-    padding-left: 6px;
-    padding-right: 6px;
+#HUD path{
+    opacity: 1;
+}
+.modeSelected{
+    fill: #ff0000 !important;
+    opacity: 1 !important;
+}
+.modeSelected:hover{
+    fill: #8a0000 !important;
+    opacity: 1 !important;
 }
